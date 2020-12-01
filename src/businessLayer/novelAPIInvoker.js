@@ -6,14 +6,14 @@ const invokeAllCountryData = async () => {
   NetworkHandler.requestHandler
     .get("/all")
     .then((response) => {
-      console.log("data from :", JSON.stringify(response.data));
+      // console.log("data from :", JSON.stringify(response.data));
       CovidAllDetailsModel.destroy({
         where: {},
         truncate: true,
       }).then(() => {
         CovidAllDetailsModel.create(response.data)
           .then((response) => {
-            console.log("data insert: ", response);
+            // console.log("data insert: ", response);
           })
           .catch((error) => {
             console.log("Unable to insert Data", error);
@@ -32,14 +32,14 @@ const invokeCounteyDetailsData = () => {
   NetworkHandler.requestHandler
     .get("/countries")
     .then((response) => {
-      console.log("data from :", JSON.stringify(response.data));
+      // console.log("data from :", JSON.stringify(response.data));
       CovidDetailsModel.destroy({
         where: {},
         truncate: true,
       }).then(() => {
         CovidDetailsModel.bulkCreate(response.data)
           .then((response) => {
-            console.log("data insert: ", response);
+            // console.log("data insert: ", response);
           })
           .catch((error) => {
             console.log("Unable to insert Data", error);
