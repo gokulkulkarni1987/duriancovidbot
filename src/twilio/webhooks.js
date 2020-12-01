@@ -6,8 +6,8 @@ const twillioMsgReceived = (req, res) => {
   const { body: mainBody } = req;
 
   const { Body: body, From: from } = mainBody;
-  let message;
-  switch(body) {
+
+  switch(body.toUpperCase()) {
     case 'CASES':
       getCountryCasesBL(body, from);
       break;
